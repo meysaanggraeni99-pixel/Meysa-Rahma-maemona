@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LKPD JavaScript - Meysa Anggraeni</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:
+        linear-gradient(180deg,#ffb36b 0%,#ff8b91 22%,#1686a3 55%,#043b5c 100%);
+    color:#073b4c;
+}
+
+/* HEADER */
+header{
+    text-align:center;
+    padding:45px 20px;
+    color:white;
+}
+
+header h1{
+    font-size:40px;
+    margin:10px 0;
+    text-shadow:3px 3px #064765;
+}
+
+header p{
+    font-size:18px;
+}
+
+.ship{
+    font-size:65px;
+}
+
+/* BUBBLES */
+.bubble{
+    position:fixed;
+    border:2px solid rgba(255,255,255,.5);
+    border-radius:50%;
+    animation:up 8s infinite;
+    z-index:-1;
+}
+
+.b1{
+    width:25px;
+    height:25px;
+    left:10%;
+    bottom:-40px;
+}
+
+.b2{
+    width:45px;
+    height:45px;
+    left:80%;
+    bottom:-50px;
+    animation-delay:2s;
+}
+
+.b3{
+    width:18px;
+    height:18px;
+    left:50%;
+    bottom:-30px;
+    animation-delay:4s;
+}
+
+@keyframes up{
+    from{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    30%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-100vh);
+        opacity:0;
+    }
+}
+
+/* CONTAINER */
+.container{
+    width:92%;
+    max-width:1050px;
+    margin:auto;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,.95);
+    border-radius:28px;
+    padding:30px;
+    margin:25px 0;
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+    position:relative;
+    overflow:hidden;
+}
+
+.card::after{
+    content:"🐚";
+    position:absolute;
+    right:20px;
+    bottom:10px;
+    font-size:50px;
+    opacity:.12;
+}
+
+h2{
+    color:#075985;
+    border-bottom:4px solid #ff956b;
+    padding-bottom:10px;
+}
+
+h3{
+    color:#087f8c;
+}
+
+.tag{
+    display:inline-block;
+    padding:8px 16px;
+    background:#ff956b;
+    color:white;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* IDENTITAS */
+.identity{
+    background:#fff7f0;
+    border:2px solid #74c6c9;
+    border-radius:18px;
+    padding:15px 20px;
+    font-size:19px;
+}
+
+.identity p{
+    margin:7px 0;
+}
+
+/* CODE */
+pre{
+    background:#062f49;
+    color:#e0faff;
+    padding:20px;
+    border-radius:18px;
+    overflow-x:auto;
+    line-height:1.55;
+    border-left:7px solid #ff956b;
+}
+
+/* ANSWER */
+.answer{
+    background:linear-gradient(135deg,#e4faff,#fff0e5);
+    border:2px dashed #42aeb5;
+    border-radius:16px;
+    padding:18px;
+    margin-top:15px;
+}
+
+/* TABLE */
+.table-box{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th{
+    background:#087f8c;
+    color:white;
+    padding:13px;
+}
+
+td{
+    border:2px solid #b6e2e5;
+    padding:12px;
+    text-align:center;
+    background:#f8ffff;
+}
+
+/* FOOTER */
+footer{
+    margin-top:50px;
+    background:#042d45;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
+
+footer .fish{
+    font-size:45px;
+}
+
+@media(max-width:700px){
+
+    header h1{
+        font-size:29px;
+    }
+
+    .card{
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bubble b1"></div>
+<div class="bubble b2"></div>
+<div class="bubble b3"></div>
+
+<header>
+
+<div class="ship">🌅 🚢</div>
+
+<h1>OCEAN CODE ADVENTURE</h1>
+
+<p>🌊 LKPD JavaScript – INPUT, OUTPUT & OPERATOR 🌊</p>
+
+<p>🐠 Petualangan Coding di Lautan 🐠</p>
+
+</header>
+
+
+<div class="container">
+
+
+<!-- IDENTITAS -->
+<section class="card">
+
+<span class="tag">🏝️ DATA PENJELAJAH</span>
+
+<h2>Identitas Siswa</h2>
+
+<div class="identity">
+
+<p><b>Nama:</b> Meysa Anggraeni & Rahma Maemona Mustika</p>
+
+<p><b>Kelas:</b> X PPLG 1</p>
+
+<p><b>Tanggal:</b> 23/09/2026</p>
+
+</div>
+
+</section>
+
+
+<!-- PETUNJUK -->
+<section class="card">
+
+<span class="tag">🧭 MISI 01</span>
+
+<h2>Petunjuk</h2>
+
+<ol>
+<li>Kerjakan berurutan.</li>
+<li>Jalankan setiap kode dan amati hasilnya.</li>
+<li>Pahami fungsi setiap baris, jangan sekadar menyalin.</li>
+<li>Jika error, baca pesan error dan cari penyebabnya.</li>
+<li>Diskusikan bagian yang sulit dengan pasangan atau kelompok.</li>
+</ol>
+
+</section>
+
+
+<!-- AKTIVITAS 1 -->
+<section class="card">
+
+<span class="tag">🐠 AKTIVITAS 1</span>
+
+<h2>Prediksi</h2>
+
+<pre>
+let a = 10;
+let b = 5;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+</pre>
+
+<div class="table-box">
+
+<table>
+
+<tr>
+<th>Operasi</th>
+<th>Prediksi</th>
+<th>Hasil sebenarnya</th>
+</tr>
+
+<tr>
+<td>a + b</td>
+<td>15</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>a - b</td>
+<td>5</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>a * b</td>
+<td>50</td>
+<td>50</td>
+</tr>
+
+<tr>
+<td>a / b</td>
+<td>2</td>
+<td>2</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="answer">
+
+<b>Apakah prediksi kamu benar?</b>
+
+<br><br>
+
+☑ Ya &nbsp;&nbsp; ☐ Sebagian &nbsp;&nbsp; ☐ Tidak
+
+<br><br>
+
+<b>Mengapa?</b>
+
+<br>
+
+Karena setiap operator menghasilkan perhitungan sesuai
+fungsi aritmatikanya.
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 2 -->
+<section class="card">
+
+<span class="tag">🪸 AKTIVITAS 2</span>
+
+<h2>Eksperimen</h2>
+
+<pre>
+let a = 20;
+let b = 4;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+console.log(a % b);
+</pre>
+
+<div class="answer">
+
+<b>Prediksi:</b>
+
+<br><br>
+
+a + b = <b>24</b><br>
+a - b = <b>16</b><br>
+a * b = <b>80</b><br>
+a / b = <b>5</b><br>
+a % b = <b>0</b>
+
+</div>
+
+<div class="answer">
+
+<b>Apa yang kamu temukan?</b>
+
+<br><br>
+
+Setiap operator mempunyai fungsi berbeda.
+Operator % menghasilkan sisa pembagian.
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 3 -->
+<section class="card">
+
+<span class="tag">🐬 AKTIVITAS 3</span>
+
+<h2>Input dengan prompt()</h2>
+
+<pre>
+let nama = prompt("Masukkan nama:");
+console.log(nama);
+
+let umur = prompt("Masukkan umur:");
+console.log(umur);
+</pre>
+
+<div class="answer">
+
+<b>Apa fungsi prompt()?</b>
+
+<br><br>
+
+prompt() berfungsi untuk meminta input dari pengguna.
+Hasil prompt() secara umum berupa teks/string.
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 4 -->
+<section class="card">
+
+<span class="tag">🌅 AKTIVITAS 4</span>
+
+<h2>Menghitung Umur</h2>
+
+<pre>
+let tahunLahir = prompt("Masukkan tahun lahir:");
+let tahunSekarang = 2026;
+let umur = tahunSekarang - tahunLahir;
+
+console.log(umur);
+</pre>
+
+<div class="answer">
+
+<b>Uji dengan tahun lahir kamu.</b>
+
+<br><br>
+
+Contoh tahun lahir: <b>2010</b>
+
+<br>
+
+Umur = <b>16 tahun</b>
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 5 -->
+<section class="card">
+
+<span class="tag">⚓ AKTIVITAS 5</span>
+
+<h2>Mesin Kasir Mini</h2>
+
+<pre>
+let harga = prompt("Masukkan harga:");
+let jumlah = prompt("Masukkan jumlah:");
+
+let total = harga * jumlah;
+
+console.log(total);
+</pre>
+
+<div class="answer">
+
+<b>Uji:</b>
+
+<br><br>
+
+Harga = Rp5.000<br>
+Jumlah = 4
+
+<br><br>
+
+Total = <b>Rp20.000</b>
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 6 -->
+<section class="card">
+
+<span class="tag">🤿 AKTIVITAS 6</span>
+
+<h2>Think Pair Share</h2>
+
+<h3>THINK</h3>
+
+<div class="answer">
+
+<b>Mengapa membutuhkan variable total?</b>
+
+<br><br>
+
+Karena variable total digunakan untuk menyimpan hasil
+perhitungan sehingga dapat digunakan atau ditampilkan.
+
+</div>
+
+
+<h3>PAIR</h3>
+
+<div class="answer">
+
+<b>Jawaban sama?</b>
+
+<br><br>
+
+☑ Ya &nbsp;&nbsp; ☐ Tidak
+
+<br><br>
+
+Jika berbeda:
+
+<br>
+
+Setiap anggota dapat mempunyai pendapat yang berbeda,
+tetapi variable total digunakan untuk menyimpan hasil
+perhitungan.
+
+</div>
+
+
+<h3>SHARE</h3>
+
+<div class="answer">
+
+<b>Kesimpulan kelompok:</b>
+
+<br><br>
+
+Variable total digunakan untuk menyimpan hasil perhitungan
+agar lebih mudah digunakan dalam program.
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 7 -->
+<section class="card">
+
+<span class="tag">🏪 AKTIVITAS 7</span>
+
+<h2>Challenge: Warung Digital</h2>
+
+<p>
+Buat program yang meminta nama makanan, harga, dan jumlah.
+Tampilkan nama, harga, jumlah, dan total.
+</p>
+
+<pre>
+let makanan = prompt("Nama makanan:");
+let harga = prompt("Harga:");
+let jumlah = prompt("Jumlah:");
+
+let total = harga * jumlah;
+
+console.log(makanan);
+console.log(harga);
+console.log(jumlah);
+console.log(total);
+</pre>
+
+
+<h3>💰 Kembangkan dengan diskon 10%</h3>
+
+<pre>
+let diskon = total * 10 / 100;
+let bayar = total - diskon;
+
+console.log("Total:", total);
+console.log("Diskon:", diskon);
+console.log("Total Bayar:", bayar);
+</pre>
+
+<div class="answer">
+
+<b>Contoh:</b>
+
+<br><br>
+
+Makanan = Nasi Goreng<br>
+Harga = Rp10.000<br>
+Jumlah = 2<br>
+Total = Rp20.000<br>
+Diskon = Rp2.000<br>
+Total Bayar = <b>Rp18.000</b>
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 8 -->
+<section class="card">
+
+<span class="tag">🔧 AKTIVITAS 8</span>
+
+<h2>Debugging</h2>
+
+<pre>
+let harga = 5000;
+let jumlah = 3;
+let total harga = harga * jumlah;
+
+console.log(total harga);
+</pre>
+
+<div class="answer">
+
+<b>Kesalahan:</b>
+
+<br><br>
+
+Nama variable <b>total harga</b> menggunakan spasi.
+Nama variable tidak boleh menggunakan spasi.
+
+<br><br>
+
+<b>Perbaikan kode:</b>
+
+</div>
+
+<pre>
+let harga = 5000;
+let jumlah = 3;
+
+let totalHarga = harga * jumlah;
+
+console.log(totalHarga);
+</pre>
+
+<div class="answer">
+
+Hasil = <b>15000</b>
+
+</div>
+
+</section>
+
+
+<!-- AKTIVITAS 9 -->
+<section class="card">
+
+<span class="tag">💎 AKTIVITAS 9</span>
+
+<h2>Challenge Mandiri: Kalkulator Tabungan</h2>
+
+<p>
+Buat program yang meminta uang awal, tabungan hari pertama,
+kedua, dan ketiga, lalu menghitung total.
+</p>
+
+<pre>
+let uangAwal = Number(prompt("Uang awal:"));
+
+let hariPertama =
+Number(prompt("Tabungan hari pertama:"));
+
+let hariKedua =
+Number(prompt("Tabungan hari kedua:"));
+
+let hariKetiga =
+Number(prompt("Tabungan hari ketiga:"));
+
+let total =
+uangAwal +
+hariPertama +
+hariKedua +
+hariKetiga;
+
+console.log("Total tabungan =", total);
+</pre>
+
+<div class="answer">
+
+<b>Contoh:</b>
+
+<br><br>
+
+Uang awal = Rp10.000<br>
+Hari pertama = Rp5.000<br>
+Hari kedua = Rp7.000<br>
+Hari ketiga = Rp8.000
+
+<br><br>
+
+Total tabungan = <b>Rp30.000</b>
+
+</div>
+
+</section>
+
+
+<!-- BAHAN AJAR -->
+<section class="card">
+
+<span class="tag">📚 BAHAN AJAR</span>
+
+<h2>Mengingat Variable</h2>
+
+<p>
+Variable adalah tempat untuk menyimpan data.
+</p>
+
+<pre>
+let nama = "Budi";
+let umur = 17;
+let nilai = 85;
+</pre>
+
+
+<h2>Input – Process – Output</h2>
+
+<pre>
+INPUT
+↓
+PROCESS
+↓
+OUTPUT
+</pre>
+
+<pre>
+let harga = 5000;
+let jumlah = 3;
+let total = harga * jumlah;
+
+console.log(total);
+</pre>
+
+
+<h2>Output dengan console.log()</h2>
+
+<pre>
+console.log("Halo");
+
+let nama = "Budi";
+
+console.log(nama);
+
+console.log("Nama saya adalah", nama);
+</pre>
+
+
+<h2>Input dengan prompt()</h2>
+
+<pre>
+let nama = prompt("Masukkan nama:");
+
+console.log(nama);
+</pre>
+
+<p>
+Alur: Pengguna mengetik → prompt() → variable → console.log().
+</p>
+
+
+<h2>Operator Aritmatika</h2>
+
+<div class="table-box">
+
+<table>
+
+<tr>
+<th>Operator</th>
+<th>Fungsi</th>
+<th>Contoh</th>
+<th>Hasil</th>
+</tr>
+
+<tr>
+<td>+</td>
+<td>Penjumlahan</td>
+<td>10 + 5</td>
+<td>15</td>
+</tr>
+
+<tr>
+<td>-</td>
+<td>Pengurangan</td>
+<td>10 - 5</td>
+<td>5</td>
+</tr>
+
+<tr>
+<td>*</td>
+<td>Perkalian</td>
+<td>10 * 5</td>
+<td>50</td>
+</tr>
+
+<tr>
+<td>/</td>
+<td>Pembagian</td>
+<td>10 / 5</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>%</td>
+<td>Sisa pembagian</td>
+<td>10 % 3</td>
+<td>1</td>
+</tr>
+
+</table>
+
+</div>
+
+
+<h2>Variable dalam Perhitungan</h2>
+
+<pre>
+let nilai1 = 80;
+let nilai2 = 90;
+
+let total = nilai1 + nilai2;
+
+console.log(total);
+</pre>
+
+
+<h2>Contoh Kehidupan Nyata</h2>
+
+<p>
+Harga satu buku Rp10.000 dan membeli 3 buku.
+</p>
+
+<pre>
+let harga = 10000;
+let jumlah = 3;
+
+let total = harga * jumlah;
+
+console.log(total);
+</pre>
+
+<p>
+Hasilnya <b>30000</b>.
+</p>
+
+
+<h2>Pola Dasar Program</h2>
+
+<pre>
+let data1 = ...;
+let data2 = ...;
+
+let hasil = data1 OPERASI data2;
+
+console.log(hasil);
+</pre>
+
+<pre>
+let panjang = 10;
+let lebar = 5;
+
+let luas = panjang * lebar;
+
+console.log(luas);
+</pre>
+
+
+<h2>Catatan tentang prompt()</h2>
+
+<p>
+Hasil prompt() secara umum diterima sebagai teks/string.
+Untuk mengubahnya menjadi angka dapat digunakan Number().
+</p>
+
+<pre>
+let angka = Number(prompt("Masukkan angka:"));
+</pre>
+
+</section>
+
+
+<!-- ASESMEN -->
+<section class="card">
+
+<span class="tag">🏆 ASESMEN</span>
+
+<h2>Asesmen Formatif</h2>
+
+
+<h3>1. Apa output dari kode berikut?</h3>
+
+<pre>
+let a = 8;
+let b = 2;
+
+console.log(a + b);
+</pre>
+
+<div class="answer">
+<b>Jawaban: 10</b>
+</div>
+
+
+<h3>2. Apa output dari kode berikut?</h3>
+
+<pre>
+let a = 10;
+let b = 3;
+
+console.log(a % b);
+</pre>
+
+<div class="answer">
+<b>Jawaban: 1</b>
+</div>
+
+
+<h3>3. Apa fungsi prompt()?</h3>
+
+<div class="answer">
+
+<b>Jawaban:</b>
+
+<br><br>
+
+prompt() berfungsi untuk meminta input dari pengguna.
+
+</div>
+
+
+<h3>
+4. Buat program menghitung luas persegi panjang
+dengan panjang 10 dan lebar 5.
+</h3>
+
+<pre>
+let panjang = 10;
+let lebar = 5;
+
+let luas = panjang * lebar;
+
+console.log(luas);
+</pre>
+
+<div class="answer">
+<b>Jawaban: 50</b>
+</div>
+
+</section>
+
+
+<!-- RUBRIK -->
+<section class="card">
+
+<span class="tag">⭐ RUBRIK</span>
+
+<h2>Rubrik Penilaian</h2>
+
+<div class="table-box">
+
+<table>
+
+<tr>
+<th>Aspek</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+
+<tr>
+<td>Memahami input-output</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Penggunaan variable</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Penggunaan operator</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Penggunaan prompt()</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Ketepatan program</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Debugging</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Kemandirian</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+<tr>
+<td>Kreativitas</td>
+<td>□</td><td>□</td><td>□</td><td>□</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="answer">
+
+<b>Keterangan:</b>
+
+<br><br>
+
+4 = mandiri dan benar<br>
+3 = benar dengan sedikit bantuan<br>
+2 = masih membutuhkan bimbingan<br>
+1 = belum mampu
+
+</div>
+
+</section>
+
+
+<!-- REFLEKSI -->
+<section class="card">
+
+<span class="tag">🌊 REFLEKSI</span>
+
+<h2>Refleksi Pembelajaran Mendalam</h2>
+
+<div class="answer">
+
+<b>Berkesadaran:</b>
+
+<br>
+
+Hari ini saya menyadari bahwa JavaScript dapat digunakan
+untuk menerima input, melakukan proses, dan menghasilkan output.
+
+</div>
+
+<div class="answer">
+
+<b>Bermakna:</b>
+
+<br>
+
+Materi ini dapat digunakan untuk membuat program sederhana
+dan melakukan berbagai perhitungan.
+
+</div>
+
+<div class="answer">
+
+<b>Menggembirakan:</b>
+
+<br>
+
+Bagian pembelajaran yang paling saya sukai adalah
+mencoba kode JavaScript dan melihat hasilnya.
+
+</div>
+
+</section>
+
+
+<!-- EXIT TICKET -->
+<section class="card">
+
+<span class="tag">🎫 EXIT TICKET</span>
+
+<h2>Exit Ticket</h2>
+
+<div class="answer">
+
+<b>1. Satu hal yang sudah saya kuasai:</b>
+
+<br><br>
+
+Saya sudah memahami penggunaan variable dan operator aritmatika.
+
+</div>
+
+<div class="answer">
+
+<b>2. Satu hal yang masih membingungkan:</b>
+
+<br><br>
+
+Saya masih perlu berlatih menggunakan prompt() dan Number().
+
+</div>
+
+<div class="answer">
+
+<b>3. Satu hal yang ingin saya coba:</b>
+
+<br><br>
+
+Saya ingin mencoba membuat program JavaScript sederhana
+yang dapat menghitung total harga.
+
+</div>
+
+</section>
+
+
+<!-- URUTAN MATERI -->
+<section class="card">
+
+<span class="tag">🗺️ PETA PERJALANAN</span>
+
+<h2>Urutan Materi Selanjutnya</h2>
+
+<ol>
+
+<li>Pengenalan JavaScript</li>
+<li>Variable</li>
+<li><b>Input – Output – Aritmatika ← SEKARANG</b></li>
+<li>Number & String + Konversi Data</li>
+<li>Operator Perbandingan</li>
+<li>Boolean</li>
+<li>Percabangan if</li>
+<li>if – else</li>
+<li>else if</li>
+<li>Nested if</li>
+<li>Perulangan</li>
+<li>Array</li>
+<li>Function</li>
+<li>Object</li>
+<li>DOM</li>
+<li>Event</li>
+<li>Mini Project</li>
+
+</ol>
+
+</section>
+
+</div>
+
+
+<footer>
+
+<div class="fish">
+🐠 🐟 🐬 🐳 🦀
+</div>
+
+<h2 style="color:white;border:0;">
+MISSION COMPLETE!
+</h2>
+
+<p>
+🌊 Selamat Meysa! Kamu telah menyelesaikan
+petualangan JavaScript di lautan coding. 🌊
+</p>
+
+<p>
+⚓ KEEP CODING • KEEP EXPLORING ⚓
+</p>
+
+</footer>
+
+</body>
+</html>
